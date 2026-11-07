@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arvir Jane Redondo — Data Analyst &amp; AI Graduate Researcher</title>
+<meta name="description" content="Personal website of Arvir Jane Redondo — Data Analyst at Security Bank, MEng'g in Artificial Intelligence at UP Diliman. Python, SQL, PySpark; finance, banking & logistics.">
+<style>
+  :root{
+    --bg:#0b0f17;
+    --bg-soft:#111827;
+    --card:#141c2b;
+    --card-2:#182234;
+    --ink:#e8edf6;
+    --ink-dim:#9aa7bd;
+    --ink-faint:#67748c;
+    --accent:#4f8cff;
+    --accent-2:#39d3c0;
+    --gold:#f2c14e;
+    --line:rgba(148,163,184,.14);
+    --radius:16px;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h2.sec{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    font-weight:750;
+    letter-spacing:-.02em;
+    margin-bottom:14px;
+  }
+  .sec-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:650;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-2);margin-bottom:12px;
+  }
+  .sec-tag::before{content:"";width:22px;height:2px;background:var(--accent-2);border-radius:2px}
+  .lead{color:var(--ink-dim);max-width:640px;font-size:1.06rem}
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,15,23,.72);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:750;font-size:1.02rem;letter-spacing:-.01em}
+  .logo .dot{color:var(--accent)}
+  .nav-links{display:flex;gap:26px;font-size:.9rem;color:var(--ink-dim)}
+  .nav-links a{transition:color .18s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    font-size:.86rem;font-weight:600;color:#fff;
+    background:linear-gradient(135deg,var(--accent),#6d5efc);
+    padding:8px 16px;border-radius:999px;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(79,140,255,.35)}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* Hero */
+  header{
+    position:relative;
+    padding:110px 0 90px;
+    background:
+      radial-gradient(900px 420px at 78% -10%, rgba(79,140,255,.20), transparent 60%),
+      radial-gradient(700px 380px at 12% 8%, rgba(57,211,192,.14), transparent 55%),
+      var(--bg);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:48px;align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;color:var(--ink-dim);
+    background:rgba(79,140,255,.10);border:1px solid rgba(79,140,255,.28);
+    padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .badge .live{width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px rgba(57,211,192,.18)}
+  h1{
+    font-size:clamp(2.5rem,6vw,4rem);
+    font-weight:800;letter-spacing:-.03em;line-height:1.04;margin-bottom:18px;
+  }
+  h1 .grad{
+    background:linear-gradient(120deg,#fff,#bcd4ff 40%,var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{color:var(--ink-dim);font-size:1.12rem;max-width:560px;margin-bottom:30px}
+  .hero-sub b{color:var(--ink);font-weight:650}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:.95rem;font-weight:650;padding:12px 22px;border-radius:12px;
+    transition:transform .18s,box-shadow .18s,background .18s;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--accent),#6d5efc);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(79,140,255,.4)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink-dim);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{color:var(--ink);border-color:rgba(148,163,184,.4)}
+
+  /* Terminal card */
+  .term{
+    background:#0d1420;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 30px 70px rgba(0,0,0,.45);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.84rem;overflow:hidden;
+  }
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;background:#101a29;border-bottom:1px solid var(--line)}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .term-bar i:nth-child(1){background:#ff5f57}
+  .term-bar i:nth-child(2){background:#febc2e}
+  .term-bar i:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:8px;color:var(--ink-faint);font-size:.75rem}
+  .term-body{padding:18px 18px 22px;line-height:1.9}
+  .term-body .c{color:var(--ink-faint)}
+  .term-body .k{color:var(--accent-2)}
+  .term-body .s{color:var(--gold)}
+  .term-body .p{color:#7cc7ff}
+
+  /* About */
+  #about{background:var(--bg-soft)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+  .about-text p{color:var(--ink-dim);margin-bottom:16px}
+  .about-text p b{color:var(--ink);font-weight:650}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:460px){.facts{grid-template-columns:1fr}}
+  .fact{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;
+  }
+  .fact .n{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .fact .n span{color:var(--accent-2)}
+  .fact .l{font-size:.82rem;color:var(--ink-faint);margin-top:4px}
+
+  /* Skills */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .sk-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;transition:transform .2s,border-color .2s;
+  }
+  .sk-card:hover{transform:translateY(-4px);border-color:rgba(79,140,255,.4)}
+  .sk-card .ico{
+    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+    font-size:1.3rem;margin-bottom:16px;
+    background:linear-gradient(135deg,rgba(79,140,255,.2),rgba(57,211,192,.18));
+    border:1px solid rgba(79,140,255,.25);
+  }
+  .sk-card h3{font-size:1.05rem;margin-bottom:12px;font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:.78rem;color:var(--ink-dim);
+    background:rgba(255,255,255,.03);border:1px solid var(--line);
+    padding:5px 11px;border-radius:999px;
+  }
+  .chip.hl{color:#0b0f17;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;font-weight:650}
+
+  /* Experience timeline */
+  #experience{background:var(--bg-soft)}
+  .timeline{position:relative;margin-top:38px;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),var(--accent-2))}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-30px;top:5px;width:16px;height:16px;border-radius:50%;
+    background:var(--bg-soft);border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(79,140,255,.15);
+  }
+  .tl-date{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2)}
+  .tl-role{font-size:1.15rem;font-weight:750;margin:6px 0 2px}
+  .tl-org{color:var(--ink-dim);font-size:.95rem;margin-bottom:10px}
+  .tl-desc{color:var(--ink-faint);font-size:.94rem;max-width:620px}
+
+  /* Education & certifications */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:800px){.duo{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .panel h3{font-size:1.1rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .edu-item{padding:14px 0;border-top:1px solid var(--line)}
+  .edu-item:first-of-type{border-top:none;padding-top:0}
+  .edu-item .t{font-weight:650;font-size:.98rem}
+  .edu-item .m{color:var(--ink-faint);font-size:.85rem;margin-top:2px}
+  .cert{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:.92rem}
+  .cert:first-of-type{border-top:none;padding-top:0}
+  .cert .y{color:var(--ink-faint);white-space:nowrap;font-size:.82rem}
+
+  /* Contact */
+  #contact{
+    text-align:center;
+    background:
+      radial-gradient(700px 300px at 50% 0%, rgba(79,140,255,.16), transparent 65%),
+      var(--bg);
+  }
+  #contact .lead{margin:0 auto 34px}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+  .clink{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:13px 22px;font-size:.92rem;font-weight:600;color:var(--ink-dim);
+    transition:transform .18s,color .18s,border-color .18s;
+  }
+  .clink:hover{transform:translateY(-2px);color:var(--ink);border-color:rgba(79,140,255,.45)}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 0;text-align:center;color:var(--ink-faint);font-size:.84rem;
+  }
+  footer .heart{color:var(--accent-2)}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">Arvir<span class="dot">.</span>Redondo</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge"><span class="live"></span> Data Analyst · NCR, Philippines</span>
+      <h1>Hi, I'm <span class="grad">Arvir Jane</span><br>Redondo.</h1>
+      <p class="hero-sub">
+        A curious researcher who found her middle ground in <b>Data Science</b> — turning messy
+        data into immediate, practical impact. Currently a <b>Data Analyst at Security Bank</b>
+        and an <b>MEng'g in Artificial Intelligence</b> graduate student at UP Diliman.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">Explore my work ↓</a>
+        <a href="https://linkedin.com/in/arvirjaneredondo" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn →</a>
+      </div>
+    </div>
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><i></i><i></i><i></i><span>arvir@nyc — zsh</span></div>
+      <div class="term-body">
+        <div><span class="c"># whoami</span></div>
+        <div><span class="k">name</span>: <span class="s">"Arvir Jane Redondo"</span></div>
+        <div><span class="k">role</span>: <span class="p">Data Analyst</span></div>
+        <div><span class="k">org</span>: <span class="p">Security Bank · DSAI</span></div>
+        <div><span class="k">studying</span>: <span class="s">"MEng — AI, UP Diliman"</span></div>
+        <div><span class="k">stack</span>: <span class="p">[Python, SQL, PySpark]</span></div>
+        <div><span class="k">domains</span>: <span class="p">[Finance, Banking, Logistics]</span></div>
+        <div><span class="k">interest</span>: <span class="s">"Sustainable AI · Open-source AI"</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-tag">About</span>
+      <h2 class="sec">Curiosity meets impact</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a curious person who finds scientific research meaningful — but I also crave
+          practical application and immediate impact, especially in business. Data Science
+          gave me that middle ground: the rigor of research paired with the ability to move a
+          needle in the real world.
+        </p>
+        <p>
+          Over the last several years I've moved from <b>scientific research in psychology</b>
+          to <b>business intelligence in logistics</b> to <b>advanced analytics in banking</b>,
+          and now I'm deepening the theory side as an <b>Artificial Intelligence graduate
+          student</b>. I'm drawn to <b>sustainable and open-source AI</b> — work that is both
+          principled and broadly accessible.
+        </p>
+        <p>
+          Away from the terminal, I'm a fan of superheroes, Filipino jeepneys, and building
+          automated workflows that save the next person an afternoon.
+        </p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><div class="n">4<span>+</span></div><div class="l">Years in analytics, BI &amp; research</div></div>
+        <div class="fact"><div class="n">3</div><div class="l">Industries — banking, logistics, education</div></div>
+        <div class="fact"><div class="n">MEng</div><div class="l">AI graduate student @ UP Diliman</div></div>
+        <div class="fact"><div class="n">∞</div><div class="l">Curiosity, applied to practical problems</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-tag">Skills</span>
+      <h2 class="sec">What I work with</h2>
+      <p class="lead">A toolkit built across research, reporting, and analytics roles.</p>
+    </div>
+    <div class="skill-groups" style="margin-top:40px">
+      <div class="sk-card reveal">
+        <div class="ico">🐍</div>
+        <h3>Languages &amp; Compute</h3>
+        <div class="chips">
+          <span class="chip hl">Python</span>
+          <span class="chip hl">SQL</span>
+          <span class="chip hl">PySpark</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Jupyter</span>
+        </div>
+      </div>
+      <div class="sk-card reveal">
+        <div class="ico">📊</div>
+        <h3>Analytics &amp; BI</h3>
+        <div class="chips">
+          <span class="chip">Data Analysis</span>
+          <span class="chip">Business Intelligence</span>
+          <span class="chip">Data Handling</span>
+          <span class="chip">Dashboards</span>
+          <span class="chip">Reporting</span>
+        </div>
+      </div>
+      <div class="sk-card reveal">
+        <div class="ico">🤖</div>
+        <h3>ML &amp; Automation</h3>
+        <div class="chips">
+          <span class="chip">Machine Learning</span>
+          <span class="chip">Regression</span>
+          <span class="chip">Classification</span>
+          <span class="chip">Automated Workflows</span>
+          <span class="chip">Automation Solutions</span>
+        </div>
+      </div>
+      <div class="sk-card reveal">
+        <div class="ico">🏦</div>
+        <h3>Domain Knowledge</h3>
+        <div class="chips">
+          <span class="chip">Finance</span>
+          <span class="chip">Banking</span>
+          <span class="chip">Credit</span>
+          <span class="chip">Logistics</span>
+          <span class="chip">Compliance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-tag">Experience</span>
+      <h2 class="sec">Where I've worked</h2>
+      <p class="lead">From ERP training to advanced analytics in financial services.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">Oct 2025 — Present</div>
+        <div class="tl-role">Data Analyst — DSAI Advanced Analytics</div>
+        <div class="tl-org">Security Bank Corporation · NCR, Philippines</div>
+        <div class="tl-desc">Building advanced analytics and automated workflows for banking data. Domain focus on credit, compliance, and data-driven decisioning.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Apr 2024 — Sep 2025</div>
+        <div class="tl-role">Data Analyst — DSAI MIS</div>
+        <div class="tl-org">Security Bank Corporation</div>
+        <div class="tl-desc">Managing and reporting on management information systems; translating operational data into clear, actionable insight for stakeholders.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Dec 2022 — Mar 2024</div>
+        <div class="tl-role">Business Intelligence Specialist</div>
+        <div class="tl-org">Ninja Van</div>
+        <div class="tl-desc">Logistics-domain BI: built reports and dashboards across delivery operations, surfacing performance and process improvements.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Apr 2021 — Jan 2022</div>
+        <div class="tl-role">NetSuite ERP Trainer</div>
+        <div class="tl-org">Oracle</div>
+        <div class="tl-desc">Trained users on NetSuite ERP, turning complex system workflows into practical, day-to-day capability.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Jul 2020 — Oct 2020</div>
+        <div class="tl-role">Research Assistant — Psychology Department</div>
+        <div class="tl-org">De La Salle University</div>
+        <div class="tl-desc">Ran scientific research projects — the spark that led me toward data-driven, evidence-based work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-tag">Education &amp; Certifications</span>
+      <h2 class="sec">Always learning</h2>
+    </div>
+    <div class="duo" style="margin-top:36px">
+      <div class="panel reveal">
+        <h3>🎓 Education</h3>
+        <div class="edu-item">
+          <div class="t">MEng'g — Artificial Intelligence</div>
+          <div class="m">University of the Philippines Diliman (UPD) · Graduate Student</div>
+        </div>
+        <div class="edu-item">
+          <div class="t">Bachelor's — Psychology</div>
+          <div class="m">De La Salle University · Calabarzon, Philippines</div>
+        </div>
+        <div class="edu-item">
+          <div class="t">Deputy Treasurer</div>
+          <div class="m">Interact Club · Treasury management &amp; finance</div>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <h3>📜 Certifications &amp; Languages</h3>
+        <div class="cert"><span>Responsive Web Design — freeCodeCamp</span><span class="y">2022</span></div>
+        <div class="cert"><span>Scientific Computing with Python — freeCodeCamp</span><span class="y">2022</span></div>
+        <div class="cert"><span>Supervised ML: Regression &amp; Classification — Coursera</span><span class="y">2022</span></div>
+        <div class="cert"><span>English (Native) · German (Elementary)</span><span class="y">Languages</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <span class="sec-tag" style="justify-content:center">Contact</span>
+    <h2 class="sec">Let's build something useful</h2>
+    <p class="lead">
+      I'm always open to interesting data problems, AI research collaborations, or a good
+      conversation about sustainable and open-source AI.
+    </p>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/arvirjaneredondo" target="_blank" rel="noopener" class="clink">💼 LinkedIn</a>
+      <a href="https://www.pinterest.com/arvirjane" target="_blank" rel="noopener" class="clink">📌 Pinterest</a>
+      <a href="mailto:hello@arvirjaneredondo.com" class="clink">✉️ Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built with <span class="heart">♥</span> by Arvir Jane Redondo · Data Science, sustainable &amp; open-source AI.
+  </div>
+</footer>
+
+<script>
+  // Simple scroll-reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
